@@ -292,6 +292,33 @@
       ]
     },
     {
+      "description": "f3 => 按下打开访达,按住前往文件夹",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f3"
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 200,
+            "basic.to_if_held_down_threshold_milliseconds": 200
+          },
+
+          "to_if_alone": [
+            {
+              "shell_command": "open '/System/Library/CoreServices/Finder.app'"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "g",
+              "modifiers": ["left_shift", "left_command"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "f4 => 轻按缩放,按住最大化 (需配置快捷键)",
       "manipulators": [
         {
