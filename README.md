@@ -27,7 +27,9 @@
 > 1. 将唤出alfred的快捷键设置为left_shift+left_cmd+left_control+left_option+f1
 > 2. 将唤出siri的快捷键设置为left_shift+left_cmd+left_control+left_option+f2
 
-#### f2 => 轻按为调度中心,按住显示桌面
+#### f2 => 按下打开iTerm的hotkey window,按住打开iTerm (需配置快捷键)
+
+> 需要将hotkey window的快捷键设置为left_shift+left_cmd+left_control+left_option+f3
 
 #### f4 => 轻按缩放,按住最大化 (需配置快捷键)
 
