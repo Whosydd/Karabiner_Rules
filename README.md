@@ -1,4 +1,4 @@
-# Karabiner快捷键配置（施工中）
+# Karabiner快捷键配置
 
 ## 功能简介
 
