@@ -24,6 +24,10 @@
 
 <br>
 
+#### [vscode] alt+space => 命令面板(cmd+shift+p)
+
+<br>
+
 #### alt+i/j/k/l => 上/左/下/右
 
 <br>
@@ -36,11 +40,7 @@
 
 <br>
 
-#### [vscode] alt+space => 命令面板(cmd+shift+p)
-
-<br>
-
-#### f1 => 轻按alfred,按住siri (需配置快捷键)
+#### f1 => 按下alfred,按住siri (需配置快捷键)
 
 > 1. 将唤出alfred的快捷键设置为left_shift+left_cmd+left_control+left_option+f1
 > 2. 将唤出siri的快捷键设置为left_shift+left_cmd+left_control+left_option+f2
@@ -57,14 +57,15 @@
 
 <br>
 
-#### f4 => 轻按缩放,按住最大化 (需配置快捷键)
-
-> 1. 需要将缩放的快捷键设置为left_ctrl+left_cmd+s
-> 2. 需要将最大化的快捷键设置为left_ctrl+left_cmd+f
+#### tab+ 1/2/3/4 => 切换桌面1/2/3/4
 
 <br>
 
-#### tab+ 1/2/3/4 & q/w & space => 切换桌面1/2/3/4 & 向左/右移动桌面空间 & 按下调度中心/按住显示桌面
+#### tab+q/w => 向左/右移动桌面空间
+
+<br>
+
+#### tab+space => 按下调度中心/按住显示桌面
 
 <br>
 
@@ -76,7 +77,13 @@
 
 <br>
 
+#### tab+left_alt => 按下窗口缩放,按住窗口最大化 (需配置快捷键)
 
+> 1. 需要将缩放的快捷键设置为left_ctrl+left_cmd+s
+> 2. 需要将最大化的快捷键设置为left_ctrl+left_cmd+f
 
+<br>
 
+#### tab+win => 窗口最小化
 
+<br>

@@ -59,6 +59,36 @@
       ]
     },
     {
+      "description": "[vscode] alt+space => 命令面板(cmd+shift+p)",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "com\\.microsoft\\.VSCode",
+                "com\\.microsoft\\.VSCodeInsiders"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": ["option"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "p",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "alt+i/j/k/l => 上/左/下/右",
       "manipulators": [
         {
@@ -198,37 +228,7 @@
       ]
     },
     {
-      "description": "[vscode] alt+space => 命令面板(cmd+shift+p)",
-      "manipulators": [
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "com\\.microsoft\\.VSCode",
-                "com\\.microsoft\\.VSCodeInsiders"
-              ],
-              "type": "frontmost_application_if"
-            }
-          ],
-          "from": {
-            "key_code": "spacebar",
-            "modifiers": {
-              "mandatory": ["option"],
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p",
-              "modifiers": ["left_command", "left_shift"]
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "f1 => 轻按alfred,按住siri (需配置快捷键)",
+      "description": "f1 => 按下alfred,按住siri (需配置快捷键)",
       "manipulators": [
         {
           "from": {
@@ -324,34 +324,7 @@
       ]
     },
     {
-      "description": "f4 => 轻按缩放,按住最大化 (需配置快捷键)",
-      "manipulators": [
-        {
-          "from": {
-            "key_code": "f4"
-          },
-          "parameters": {
-            "basic.to_if_alone_timeout_milliseconds": 200,
-            "basic.to_if_held_down_threshold_milliseconds": 200
-          },
-          "to_if_alone": [
-            {
-              "key_code": "s",
-              "modifiers": ["left_control", "left_command"]
-            }
-          ],
-          "to_if_held_down": [
-            {
-              "key_code": "f",
-              "modifiers": ["left_control", "left_command"]
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
-      "description": "tab+ 1/2/3/4 & q/w & space => 切换桌面1/2/3/4 & 向左/右移动桌面空间 & 按下调度中心/按住显示桌面",
+      "description": "tab+1/2/3/4 => 切换桌面1/2/3/4",
       "manipulators": [
         {
           "type": "basic",
@@ -458,6 +431,41 @@
               "value": 1
             }
           ]
+        }
+      ]
+    },
+    {
+      "description": "tab+q/w => 向左/右移动桌面空间",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 0
+              }
+            }
+          ]
         },
         {
           "type": "basic",
@@ -494,6 +502,41 @@
               "type": "variable_if",
               "name": "tabfn_mode",
               "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "tab+space => 按下调度中心/按住显示桌面",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 0
+              }
             }
           ]
         },
@@ -632,6 +675,130 @@
             {
               "key_code": "f11",
               "modifiers": ["left_command", "left_option", "left_control"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tabfn_mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "tab+left_alt => 按下窗口缩放,按住窗口最大化 (需配置快捷键)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_option",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 200,
+            "basic.to_if_held_down_threshold_milliseconds": 200
+          },
+          "to_if_alone": [
+            {
+              "key_code": "s",
+              "modifiers": ["left_control", "left_command"]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "f",
+              "modifiers": ["left_control", "left_command"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tabfn_mode",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "tab+win => 窗口最小化",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 1
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tabfn_mode",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_control",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "m",
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
