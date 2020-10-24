@@ -14,11 +14,11 @@
 
 <br>
 
-#### [访达] Backspace => 按下backspace,按住上层文件夹
+#### [浏览器] F5 => 刷新
 
 <br>
 
-#### [浏览器] F5 => 刷新
+#### [iTerm2] alt+h/; => 光标移动到行首/行尾
 
 <br>
 
@@ -62,6 +62,7 @@
 
 > 1. 需要将窗口停靠的快捷键设置为left_cmd+left_ctrl+f9/f10
 > 2. 需要将窗口拼贴的快捷键设置为left_cmd+left_ctrl+left_option+f9/f10
+> 3. 需要将复原的快捷键设置为left_cmd+left_ctrl+left_option+f11
 
 <br>
 
