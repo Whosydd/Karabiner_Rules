@@ -198,7 +198,7 @@
       ]
     },
     {
-      "description": "[vscode] alt+space => 显示所有命令(cmd+shift+p)",
+      "description": "[vscode] alt+space => 命令面板(cmd+shift+p)",
       "manipulators": [
         {
           "conditions": [
