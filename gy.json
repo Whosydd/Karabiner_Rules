@@ -59,36 +59,6 @@
       ]
     },
     {
-      "description": "[vscode] alt+space => 命令面板(cmd+shift+p)",
-      "manipulators": [
-        {
-          "conditions": [
-            {
-              "bundle_identifiers": [
-                "com\\.microsoft\\.VSCode",
-                "com\\.microsoft\\.VSCodeInsiders"
-              ],
-              "type": "frontmost_application_if"
-            }
-          ],
-          "from": {
-            "key_code": "spacebar",
-            "modifiers": {
-              "mandatory": ["option"],
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p",
-              "modifiers": ["left_command", "left_shift"]
-            }
-          ],
-          "type": "basic"
-        }
-      ]
-    },
-    {
       "description": "alt+i/j/k/l => 上/左/下/右",
       "manipulators": [
         {
@@ -228,7 +198,7 @@
       ]
     },
     {
-      "description": "f1 => 按下alfred,按住siri (需配置快捷键)",
+      "description": "f1 => 按下alfred,按住Siri (需配置快捷键)",
       "manipulators": [
         {
           "from": {
@@ -324,6 +294,33 @@
       ]
     },
     {
+      "description": "f4 => 按下最小化窗口,按住移动到副屏 (需配置快捷键)",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f4"
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 200,
+            "basic.to_if_held_down_threshold_milliseconds": 200
+          },
+          "to_if_alone": [
+            {
+              "key_code": "m",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "f12",
+              "modifiers": ["left_command", "left_option", "left_control"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "tab+1/2/3/4 => 切换桌面1/2/3/4",
       "manipulators": [
         {
@@ -364,7 +361,7 @@
           "to_if_alone": [
             {
               "key_code": "1",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -383,7 +380,7 @@
           "to_if_alone": [
             {
               "key_code": "2",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -402,7 +399,7 @@
           "to_if_alone": [
             {
               "key_code": "3",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -421,7 +418,7 @@
           "to_if_alone": [
             {
               "key_code": "4",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -475,7 +472,7 @@
           "to_if_alone": [
             {
               "key_code": "left_arrow",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -494,7 +491,7 @@
           "to_if_alone": [
             {
               "key_code": "right_arrow",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "conditions": [
@@ -552,7 +549,7 @@
           "to_if_alone": [
             {
               "key_code": "up_arrow",
-              "modifiers": ["left_control"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "to_if_held_down": [
@@ -735,70 +732,13 @@
           "to_if_alone": [
             {
               "key_code": "s",
-              "modifiers": ["left_control", "left_command"]
+              "modifiers": ["left_command", "left_option", "left_control"]
             }
           ],
           "to_if_held_down": [
             {
               "key_code": "f",
               "modifiers": ["left_control", "left_command"]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "tabfn_mode",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "tab+win => 窗口最小化",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "tab",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "tabfn_mode",
-                "value": 1
-              }
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "tab"
-            }
-          ],
-          "to_after_key_up": [
-            {
-              "set_variable": {
-                "name": "tabfn_mode",
-                "value": 0
-              }
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "left_control",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to_if_alone": [
-            {
-              "key_code": "m",
-              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
